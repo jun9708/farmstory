@@ -1,0 +1,139 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/layout/userLayout}"> -->
+<head>
+    <meta charset="UTF-8">
+    <title>팜스토리</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/admin/css/style.css}">
+    <style></style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <a th:href="@{/}" class="logo"><img src="../../../static/images/admin/images/admin_logo.jpg" alt="로고"/></a>
+            <p>
+                <a th:href="@{/}">HOME |</a>
+                <a href="#">로그아웃 |</a>
+                <a href="#">고객센터</a>
+            </p>
+        </header>
+        <main>
+
+            <aside>
+                <h3>주요기능</h3>
+                <ul>
+                    <li class="on"><a th:href="@{/admin/user/list}">회원관리</a></li>
+                    <li><a th:href="@{/admin/product/list}">상품관리</a></li>
+                    <li><a th:href="@{/admin/order/list}">주문관리</a></li>
+                </ul>
+            </aside>
+
+            <section id="productRegister">
+                <nav>
+                    <h3>상품등록</h3>
+                </nav>
+
+                <article>
+                    <form th:action="@{/admin/product/register}" name="productForm" method="post" enctype="multipart/form-data">
+                        <input type="hidden" th:value="${#authentication.principal.user.uid}" name="uid">
+                        <table border="0">
+                            <tr>
+                                <td>상품명</td>
+                                <td><input type="text" name="pname"/></td>
+                            </tr>
+                            <tr>
+                                <td>종류</td>
+                                <td>
+                                    <select name="cate">
+                                        <option disabled selected>종류</option>
+                                        <option value="과일">과일</option>
+                                        <option value="야채">야채</option>
+                                        <option value="곡류">곡류</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>가격</td>
+                                <td><input type="text" name="price"/></td>
+                            </tr>
+                            <tr>
+                                <td>포인트</td>
+                                <td>
+                                    <input type="text" name="point" value="100"/>
+                                    포인트는 가격의 1%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>할인</td>
+                                <td>
+                                    <select name="discount">
+                                        <option value="5">5%</option>
+                                        <option value="12">12%</option>
+                                        <option value="15">15%</option>
+                                        <option value="18">18%</option>
+                                        <option value="20">20%</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>배송비</td>
+                                <td>
+                                    <label><input type="radio" name="delprice" value="2000">2,000원</label>
+                                    <label><input type="radio" name="delprice" value="3000">3,000원</label>
+                                    <label><input type="radio" name="delprice" value="5000">5,000원</label>
+                                    <label><input type="radio" name="delprice" value="0">무료</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>재고</td>
+                                <td><input type="text" name="stock"/></td>
+                            </tr>
+                            <tr>
+                                <td>상품이미지</td>
+                                <td>
+                                    <p>
+                                        <span>상품목록 이미지(약 120 x 120)</span>
+                                        <input type="file" name="imgMain"/>
+                                    </p>
+                                    <p>
+                                        <span>기본정보 이미지(약 240 x 240)</span>
+                                        <input type="file" name="imgSub1"/>
+                                    </p>
+                                    <p>
+                                        <span>상품설명 이미지(약 750 x Auto)</span>
+                                        <input type="file" name="imgSub2"/>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>기타</td>
+                                <td>
+                                    <textarea name="etc"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p>
+                            <a th:href="@{/productList}" class="btnCancel">취소</a>
+                            <input type="submit" value="상품등록"/>
+                        </p>
+                    </form>
+                </article>
+            </section>
+            </form>
+        </main>
+        <footer>            
+            <p>                
+                Copyright(C)Farmstory All rights reserved. FARMSTORY ADMINISTRATOR Version 1.0.1
+            </p>
+        </footer>
+    </div>
+    
+</body>
+</html>
