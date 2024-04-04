@@ -21,15 +21,21 @@ import java.util.List;
 @Slf4j @RequiredArgsConstructor @Service
 public class ArticleService {
     private final ArticleRepository articleRepository;
-    private final ModelMapper modelMapper;
-    private final FileService fileService;
     private final FileRepository fileRepository;
+
+    private final ModelMapper modelMapper;
+
+    private final FileService fileService;
 
     private final ArticleMapper articleMapper;
     private final CropTalkMapper cropTalkMapper;
 
     public List<ArticleDTO> selectArticles(String cate){
         return articleMapper.selectArticles(cate);
+    }
+
+    public List<ArticleDTO>selectArticlesMain(String cate){
+        return articleMapper.selectArticlesMain(cate);
     }
 
     public List<ArticleDTO> getRecentArticles(String cate) {

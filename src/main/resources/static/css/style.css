@@ -513,6 +513,8 @@ main > .info > div > .account {
 }
 #sub > .market > .view > .basic > img {
     float: left;
+    width: 35%;
+    height: 250px;
 }
 #sub > .market > .view > .basic > table {
     float: right;
@@ -535,10 +537,13 @@ main > .info > div > .account {
     position: absolute;
     right: 0;
     bottom: 0;
+    cursor: pointer;
 }
 
 
-#sub > .market > .view > .detail {}
+#sub > .market > .view > .detail img{
+    height: auto;
+}
 #sub > .market > .view > .delivery {}
 #sub > .market > .view > .exchange table {
     width: 100%;
@@ -640,6 +645,7 @@ input[type=number]::-webkit-outer-spin-button {
     border: none;
     background-color: #960d1a;
     color: white;
+    cursor: pointer;
 }
 
 #sub > .market > .cart > .info {
@@ -683,7 +689,8 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 10px;
     border: none;
     background-color: #960d1a;
-    color: white;    
+    color: white;
+    cursor: pointer;
 }
 
 #sub > .market > .order {}

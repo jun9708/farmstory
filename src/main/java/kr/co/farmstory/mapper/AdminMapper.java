@@ -9,14 +9,22 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
 
-
-    public void insertProduct(ProductDTO productDTO);
-
     public void insertAdmin(UserDTO userDTO);
 
-    public List<ProductDTO> selectProduct();
-
     // adminIndex 회원 목록 표시
+
     public List<UserDTO> selectUsers();
+
+    public List<UserDTO> adminIdxUsers();
+
+    // adminIndex 상품 목록 표시
+    public List<ProductDTO> adminIdxProducts();
+
+    // adminProduct 상품 목록
+    public List<ProductDTO> adminSelectProducts();
+
+    // adminUser 회원 목록
+    public List<UserDTO> adminSelectUsers();
+
 
 }
