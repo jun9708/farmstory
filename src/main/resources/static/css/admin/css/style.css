@@ -9,9 +9,26 @@ a {text-decoration: none; color: #111;}
 
 #container {
     position: relative;
-    width: 980px;
+    width: 1200px;
     height: auto;
     margin: 0 auto;
+}
+
+/* aside 영역 */
+.center-align {
+    text-align: center;
+}
+.center-align ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: inline-block;
+    text-align: left; /* 리스트 항목들을 왼쪽 정렬합니다. */
+}
+.center-align ol {
+    list-style-position: inside; /* ol 요소 내부에 목록 마커를 표시합니다. */
+}
+.center-align ol li {
+    margin-left: -10px; /* li 요소를 들여쓰기합니다. */
 }
 
 /* 헤더영역 */
@@ -87,11 +104,34 @@ main > aside ol > li > a:hover {
 /* 메인 컨텐츠 */
 main > section {
     float: right;
-    width: 804px;
+    width: 1000px;
     min-height: 400px;
     padding: 10px;
     box-sizing: border-box;
 }
+
+/* 🎈회원 정보 수정 폼*/
+main > #modifyUser {
+    float: none;
+    width: 600px;
+    min-height: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 30px 0px 30px 380px;
+}
+
+main > #modifyUser > nav > h3 {
+    text-align: center;
+}
+
+/* 🎈관리자 회원가입 폼 */
+#userRegister > .register {
+    width: 600px;
+    height: auto;
+    margin: 35px auto;
+    box-sizing: border-box;
+}
+
 
 main > section > nav > h3 {
     font-size: 17px;
@@ -118,6 +158,7 @@ main > section > article table {
 }
 main > section > article table tr {
     border-bottom: 1px dotted #999;
+    text-align: center;
 }
 main > section > article table tr > th {
     padding: 12px;
@@ -127,6 +168,8 @@ main > section > article table tr > td {
     padding: 12px;
     text-align: center;
 }
+
+
 
 /* 푸터영역 */
 footer {
@@ -156,22 +199,28 @@ footer > p {
 }
 
 #productList .productDelete {
-    float: left;            
+    float: left;
+    margin-top: 10px;
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #fd5900;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+
 }
 
 #productList .productRegister {
-    float: right;            
-}
-#productList .productRegister {
+    float: right;
     padding: 6px 12px;            
-    border-radius: 20px;
-    border: 1px solid #ccc;
-}
-
-#productList .productRegister:hover {
-    background-color: #ccc;
-    border: 1px solid #ccc;
-    cursor: pointer;
+    border-radius: 5px;
+    background-color: #006913a3;
+    border: 1px solid #006913a3;
+    color: #ffffff;
+    margin-top: 10px;
 }
 
 #productList .paging {            
@@ -330,3 +379,21 @@ input {
     outline: none;
 }
 
+#btnModify {
+    background-color: #ffa900;
+    width: 10%;
+    height: 30px;
+    color: #fff;
+    border-radius: 5px;
+    border: inherit;
+}
+
+/* 🎈페이지 번호 */
+.active>.page-link, .page-link.active {
+    background-color: #006913a3;
+    border: none;
+}
+
+.page-link {
+    color: #569f42;
+}

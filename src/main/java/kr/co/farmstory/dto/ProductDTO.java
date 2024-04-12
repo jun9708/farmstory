@@ -24,6 +24,10 @@ public class ProductDTO {
 
     private String uid;
     private String cate;
+
+    private String categoryName;
+
+
     private String pname;
 
     private int img;
@@ -50,7 +54,7 @@ public class ProductDTO {
 
     private List<MultipartFile> imgs;
     private List<ImgDTO> imgDTOList;
-    private String etc;
+    private String info;
 
     private String img1;
     private String img2;

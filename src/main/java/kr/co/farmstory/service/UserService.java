@@ -4,17 +4,22 @@ import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
+import kr.co.farmstory.dto.OrderDTO;
 import kr.co.farmstory.dto.TermsDTO;
 import kr.co.farmstory.dto.UserDTO;
+import kr.co.farmstory.entity.User;
 import kr.co.farmstory.mapper.AdminMapper;
 import kr.co.farmstory.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.rmi.server.UID;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -37,15 +42,31 @@ public class UserService {
     public void insertUser(UserDTO userDTO){
         String encoded = passwordEncoder.encode(userDTO.getPass());
         userDTO.setPass(encoded);
-
         userMapper.insertUser(userDTO);
     }
 
-    // adminIndex 회원목록 표시
-    public List<UserDTO> selectUsers(){
-        return adminMapper.selectUsers();
+    // 선택 사용자 조회
+    public UserDTO selectUser(String uid){
+        return userMapper.selectUser(uid);
     }
 
+    // 사용자 정보 수정
+    public void updateUser(UserDTO userDTO){
+        userMapper.updateUser(userDTO);
+    }
+
+    // 사용자 주문 조회
+    public OrderDTO selectOrder(String uid){
+        return userMapper.selectOrder(uid);
+    }
+
+    public String getUid(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.isAuthenticated()){
+            return authentication.getName();
+        }
+        return null;
+    }
 
     public int selectCountUser(String type, String value) {
         return userMapper.selectCountUser(type, value);

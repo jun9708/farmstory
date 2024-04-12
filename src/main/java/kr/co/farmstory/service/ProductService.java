@@ -5,7 +5,6 @@ import kr.co.farmstory.dto.ProductDTO;
 
 import kr.co.farmstory.entity.Product;
 
-import kr.co.farmstory.mapper.AdminMapper;
 import kr.co.farmstory.mapper.ProductMapper;
 import kr.co.farmstory.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +14,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j @Service @RequiredArgsConstructor
 public class ProductService {
@@ -26,8 +23,8 @@ public class ProductService {
     private final ModelMapper modelMapper;
 
 
-    public List<ProductDTO> selectProducts(String cate) {
-        return productMapper.selectProducts(cate);
+    public List<ProductDTO> selectProducts(String cate,String keyword) {
+        return productMapper.selectProducts(cate, keyword);
 
     }
 
@@ -45,7 +42,9 @@ public class ProductService {
         return savedProduct;
     }
 
-    //상품삭제
 
 
 }
+    //상품삭제
+
+

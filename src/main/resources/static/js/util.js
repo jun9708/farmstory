@@ -53,7 +53,27 @@ async function fetchPost(url, jsonData){
     }
 }
 
+// fetch DELETE 용
+async function fetchDelete(url){
 
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE'
+        });
+
+        if(!response.ok){
+            throw new Error('response not ok');
+        }
+
+        const data = await response.json();
+        console.log("data1 : " + data);
+
+        return data;
+
+    }catch(err){
+        console.log(err)
+    }
+}
 
 <!--🎈회원가입 모달창-->
 function showModal(message){
@@ -61,6 +81,36 @@ function showModal(message){
     modal.getElementsByClassName('modal-body')[0].innerText = message;
     const resultModal = new bootstrap.Modal(modal);
     resultModal.show();
+}
+
+function alertModal(message){
+    const modal = document.getElementById('alertModal');
+    modal.getElementsByClassName('modal-body')[0].innerText = message;
+    const resultModal = new bootstrap.Modal(modal);
+    resultModal.show();
+}
+
+function confirmModal(message) {
+
+    const modal = document.getElementById('confirmModal');
+    modal.getElementsByClassName('modal-body')[0].innerText = message;
+    const resultModal = new bootstrap.Modal(modal);
+    resultModal.show(); // 모달 열기
+
+    // 결과값 반환
+    return new Promise(resolve => {
+        // 확인 버튼 클릭 시
+        document.getElementById('btnOk').onclick = function () {
+            resultModal.hide(); // 모달 닫기
+            resolve(true); // 확인 결과값 반환
+        };
+
+        // 취소 버튼 클릭 시
+        document.getElementById('btnCancel').onclick = function () {
+            resultModal.hide(); // 모달 닫기
+            resolve(false); // 취소 결과값 반환
+        };
+    });
 }
 
 function showInputValid(inputs){
@@ -137,5 +187,53 @@ function postcode() {
             document.getElementById("inputAddr2").focus();
         }
     }).open();
+
+}
+
+<!--🎈top버튼-->
+window.onload = function () {
+    let Top = document.getElementById('top');
+
+    if (Top) {
+        Top.style.display = 'none'
+        window.addEventListener('scroll', function (){
+            if(window.scrollY > 300) {
+                Top.style.display = 'block';
+                console.log(Top);
+            } else {
+                Top.style.display = 'none';
+            }
+        });
+
+        Top.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({top:0, behavior:'smooth'});
+            console.log(Top);
+        });
+    } else {
+        console.log("#top 요소를 찾을 수 없습니다.");
+    }
+
+    const mypage = document.getElementById('mypage');
+    const cart = document.getElementById('cart');
+
+    if(mypage){
+        mypage.onclick = async function (e){
+            e.preventDefault();
+            const answer = await confirmModal("로그인 화면으로 이동하시겠습니까?");
+            if(answer == true){
+                location.href = '/farmstory/user/login';
+            }
+        }
+    }
+    if(cart){
+        cart.onclick = async function (e){
+            e.preventDefault();
+            const answer = await confirmModal("로그인 화면으로 이동하시겠습니까?");
+            if(answer == true){
+                location.href = '/farmstory/user/login';
+            }
+        }
+    }
 
 }

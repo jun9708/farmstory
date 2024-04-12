@@ -1,19 +1,26 @@
 package kr.co.farmstory.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.co.farmstory.dto.OrderDTO;
 import kr.co.farmstory.dto.TermsDTO;
 import kr.co.farmstory.dto.UserDTO;
+import kr.co.farmstory.service.OrderService;
 import kr.co.farmstory.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -22,12 +29,74 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final OrderService orderService;
 
 
     @GetMapping("/user/login")
     public String login(){
         return "/user/login";
     }
+
+    @GetMapping("/checkLogin")
+    public String checkLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "로그인 상태입니다.";
+        }else {
+            return "로그인 되지 않았습니다.";
+        }
+    }
+
+    @GetMapping("/user/modify")
+    public String modify(String uid, Model model){
+        UserDTO user = userService.selectUser(uid);
+        model.addAttribute("user", user);
+        return "/user/modify";
+    }
+
+    // 사용자 정보 수정
+    @PostMapping("/user")
+    public String updateUser(UserDTO userDTO){
+        userService.updateUser(userDTO);
+        return "redirect:/user/modify?uid=" + userDTO.getUid();
+    }
+
+   // 사용자 주문 조회
+    @GetMapping("/user/orderlist")
+   public String orderList(Model model, String uid , Integer pageNum, Integer pageSize){
+
+        pageNum = pageNum == null ? 1 : pageNum;
+        pageSize = pageSize == null ? 5 : pageSize;
+
+        PageHelper.startPage(pageNum, pageSize);
+
+        List<OrderDTO> orderDTOList = orderService.selectOrderlist(uid);
+
+        PageInfo<OrderDTO> orderPage = new PageInfo<>(orderDTOList);
+
+        log.info(" " + orderPage.getPages());
+
+        int lastPage = (pageNum / 11) * 10 + 10;
+
+        if (lastPage > orderPage.getPages()) {
+            lastPage = orderPage.getPages();
+        }
+
+        orderPage.setNavigateFirstPage((pageNum / 11) * 10 +1);
+        orderPage.setNavigateLastPage(lastPage);
+
+        log.info("selectOrderListPage" + orderPage);
+
+        model.addAttribute("orderPage", orderPage);
+        model.addAttribute("orderDTOList", orderDTOList);
+
+        log.info("orderDTOList : "+ orderDTOList.toString());
+
+        model.addAttribute(orderDTOList);
+
+        return "/user/orderlist";
+   }
+
 
     @GetMapping("/user/register")
     public String register(String sms, Model model) {
@@ -49,7 +118,6 @@ public class UserController {
         return "redirect:/user/login?success=200";
 
     }
-
 
     @ResponseBody
     @GetMapping("/user/{type}/{value}")
@@ -105,4 +173,7 @@ public class UserController {
 
         return "/user/terms";
     }
+
+
+
 }

@@ -9,6 +9,10 @@ import java.util.List;
 @Mapper
 public interface ArticleMapper {
     Page<ArticleDTO> selectAll();
-    public List<ArticleDTO> selectArticles(String cate);
+    public List<ArticleDTO> selectArticles(String grp, String cate);
     public List<ArticleDTO> selectArticlesMain(String cate);
+    public ArticleDTO selectArticle (int ano);
+    public void deleteArticle(int ano);
+    public void updateHit(int ano);
+    public void updateGood(int ano);
 }

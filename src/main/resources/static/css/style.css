@@ -1,8 +1,16 @@
+/* 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 /* 전체 스타일 초기화 */
 * {
     margin: 0;
     padding: 0;
-    font: normal 12px '돋움';
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 13px;
+    /*font: normal 12px '돋움';*/
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: #111;}
@@ -18,20 +26,68 @@ header {
     position: relative;
     width: 100%;
     height: 142px;
-    background-image: url('../images/head_top_line.png');
+    /*background-image: url('../images/head_top_line.png');*/
     background-repeat: no-repeat;
 }
 
+/*
 header > .logo {
     position: absolute;
     left: 50%;
     top: 20px;
     margin-left: -95px;
 }
-header > p {
-    float: right;
-    margin-top: 16px;
+*/
+
+header p {
+    text-align: end;
+    margin-top: 15px;
 }
+
+header .middle_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .middle_nav .searchBox input{
+    width: 400px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #72c319;
+    position: relative;
+    bottom: 8px;
+}
+
+header .middle_nav .searchBox .searchBtn {
+    position: relative;
+    right: 40px;
+    top: 2px;
+    background-color: transparent;
+    border: none;
+}
+
+header .middle_nav .searchBox .searchBtn img {
+    width: 30px;
+}
+
+header .rightNav a {
+    margin-left: 15px;
+}
+/*
+header .rightNav:last-child {
+    padding-right: 0px;
+}
+*/
+
+
+header .rightNav > a > img{
+    width: 30px;
+}
+
+
 header > img {
     float: right;
     clear: both;
@@ -152,7 +208,7 @@ main > .slider > .banner > img:nth-child(3) {
 }
 
 
-.bx-wrapper {            
+.bx-wrapper {
     box-shadow: none;
     border: none;
     background: #fff;
@@ -210,7 +266,7 @@ main > .latest table tr > td > a{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 18px;  
+    line-height: 18px;
     color: #6a6a6a;
 }
 
@@ -308,7 +364,7 @@ main > .info > div > .account {
     padding: 10px;
 }
 
-#tabs .txt > li {    
+#tabs .txt > li {
     border-bottom: 1px solid #d1d1d1;
     line-height: 26px;
 }
@@ -365,7 +421,7 @@ main > .info > div > .account {
 #sub > section > aside > ul > li {
     width: 100%;
     height: 29px;
-    margin-bottom: 6px;            
+    margin-bottom: 6px;
 }
 #sub > section > aside > ul a {
     display: block;
@@ -408,7 +464,7 @@ main > .info > div > .account {
 }
 #sub > section > article > nav > p > em {
     font-weight: bold;
-    color: #91BA15;
+    color: #A8D031;
 }
 
 /* 팜스토리 소개 */
@@ -427,20 +483,85 @@ main > .info > div > .account {
 
 #sub > .introduction > article > p > strong {
     font-weight: bold;
-    color: #91BA15;
+    color: #A8D031;
 }
 
 /* 장보기 */
+
 #sub > .market .lnb > li:nth-child(1) > a {background-image: url('../images/sub_cate2_lnb1.png');}
 #sub > .market .lnb > li:nth-child(1) > a:hover {background-image: url('../images/sub_cate2_lnb1_ov.png');}
 #sub > .market .lnb > li:nth-child(1).on > a {background-image: url('../images/sub_cate2_lnb1_ov.png');}
 
-#sub > .market > .list > .sort > a {
-    color: #999;
+#sub > .market > .list > #sortBox {
+    display: flex;
 }
-#sub > .market > .list > .sort > .on {
-    color:#111;
+
+#sub > .market > .list > #sortBox > p.sort {
+    display: flex;
+    text-align: center;
 }
+#sub > .market > .list > #sortBox > p.sort > a {
+    display: block;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    color: #333;
+    font-weight: bold;
+    background-color: #ebebeb;
+    margin-right: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+#sub > .market > .list > #sortBox > p.sort > .on {
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    background-color: #707070;
+}
+
+
+#sub > .market > .list > #sortBox > form {
+
+    position: relative;
+    left: 30px;
+    top: 20px;
+}
+
+
+#sub > .market > .list > #sortBox > form > .searchBox > input {
+    width: 200px;
+}
+
+#sub > .market > .list > #sortBox > form >.searchBox > #select {
+
+    height: 30px;
+    border: 1px solid #5c636a;
+    border-radius: 5px;
+}
+
+#sub > .market > .list > #sortBox > form > .searchBox > #prod_search {
+    width: 220px;
+    height: 30px;
+    border: 1px solid #5c636a;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#sub > .market > .list > #sortBox > form > .searchBox > .searchBtn {
+
+    background-color: transparent;
+    border: none;
+}
+
+#sub > .market > .list > #sortBox > form > .searchBox > .searchBtn > img {
+    width: 20px;
+    position: relative;
+    right: 30px;
+    bottom: 2px;
+}
+
+
 #sub > .market > .list > table {
     width: 100%;
     border-collapse: collapse;
@@ -454,15 +575,17 @@ main > .info > div > .account {
 
 #sub > .market > .list > table th {
     padding: 10px;
-    background-color: #e5ecef;
+    background-color: #A8D031;;
+    color: #fff;
     border-bottom: 1px solid #d1dee2;
 }
 
-#sub > .market > .list > table tr > td {            
-    padding: 10px;            
+#sub > .market > .list > table tr > td {
+    padding: 10px;
     box-sizing: border-box;
     color: #111;
     text-align: center;
+    vertical-align: middle;
 }
 #sub > .market > .list > table tr > td:nth-child(1) {width: 10%;}
 #sub > .market > .list > table tr > td:nth-child(2) {width: 10%; color: #777;}
@@ -473,7 +596,7 @@ main > .info > div > .account {
 
 #sub > .market > .list > table .price > strong {
     color: #111;
-    font-weight: bold;    
+    font-weight: bold;
 }
 #sub > .market > .list > table .price > strong::after {
     content: '원';
@@ -483,7 +606,7 @@ main > .info > div > .account {
     color: #777;
 }
 #sub > .market > .list > table .price > del::after {
-    content: '원';    
+    content: '원';
 }
 
 #sub > .market > .list > .paging {
@@ -500,37 +623,38 @@ main > .info > div > .account {
 
 #sub > .market > .view > h3 {
     margin: 10px 0;
-    font-family: '고딕';
     font-size: 16px;
     font-weight: bold;
 }
 
-#sub > .market > .view > .basic {
+#sub > .market > .view > .basic{
     width: 100%;
-    height: 270px;
+    height: 360px;
     position: relative;
     overflow: hidden;
 }
-#sub > .market > .view > .basic > img {
+#sub > .market > .view > .basic > form > img {
     float: left;
     width: 35%;
     height: 250px;
 }
-#sub > .market > .view > .basic > table {
+#sub > .market > .view > .basic > form > table {
     float: right;
-    width: 60%;
+    width: 50%;
     height: 200px;
     margin-left: 16px;
     border-top: 2px solid #e7e7e7;
     border-bottom: 2px solid #e7e7e7;
 }
 
-#sub > .market > .view > .basic > table em {            
+
+
+#sub > .market > .view > .basic > table em {
     color: #777;
 }
 #sub > .market > .view > .basic > table .total {
     font-weight: bold;
-    color: #c20a0a;        
+    color: #fd5900;
 }
 
 #sub > .market > .view > .basic > .btnOrder {
@@ -547,7 +671,7 @@ main > .info > div > .account {
 #sub > .market > .view > .delivery {}
 #sub > .market > .view > .exchange table {
     width: 100%;
-    border-collapse: collapse;                     
+    border-collapse: collapse;
 }
 #sub > .market > .view > .exchange table tr {}
 #sub > .market > .view > .exchange table td {
@@ -555,6 +679,13 @@ main > .info > div > .account {
     box-sizing: border-box;
     border: 1px solid #ccc;
 }
+
+#sub > .market > .view > .basic > form > table tr > td.total {
+    color: #222;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 #sub > .market > .view > .exchange table td:first-child {border-left: none;}
 #sub > .market > .view > .exchange table td:last-child {border-right: none;}
 
@@ -564,32 +695,81 @@ main > .info > div > .account {
     line-height: 18px;
 }
 
-#sub > .market > .view .btn {
-    display: inline-block;
-    width: 100px;
-    height: 40px;
-    border: none;
-    color: #fff;
-    text-align: center;
-    line-height: 40px;
+
+#sub > .market > .view > .basic > form > table tr > td.discount1 {
+    color: #fd5900;
+    font-weight: bold;
+}
+
+#sub > .market > .view > .basic > form > table tr > td.discount2 {
+    color: royalblue;
+    font-weight: bold;
+}
+
+#sub > .market > .view .viewBtn {
+    position: relative;
+    left: 375px;
+    top: 50px;
 }
 
 #sub > .market > .view .btnCart {
-    background-color: #769b0a;
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    background-color: #fff;
+    cursor: pointer;
+    width: 180px;
+    border-radius: 5px;
+    border: 2px solid #A8D031;
+    color: #A8D031;
+}
+
+#sub > .market > .view .btnCart:hover {
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    background-color: #A8D031;
+    cursor: pointer;
+    width: 180px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
 }
 
 #sub > .market > .view .btnOrder {
-    background-color: #960d1a;
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #fd5900;
+    width: 180px;
+    border: 2px solid #fd5900;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 
 input[type=number]{
-    width: 60px;
+    width: 110px;
+    height: 30px;
+    padding: 6px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #e7e7e5;
+    color: #222;
+    border: none;
+    border-radius: 5px;
     outline: none;
 }
-input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    opacity: 1;         
+    opacity: 1;
 }
 
 
@@ -608,16 +788,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .cart > table tr {
     border-bottom: 1px solid #eee;
+    text-align: center;
 }
 
-#sub > .market > .cart > table th {
-    padding: 10px;
-    background-color: #e5ecef;
-    border-bottom: 1px solid #d1dee2;
-}
 
 #sub > .market > .cart > table tr > td {
-    padding: 10px;            
+    padding: 10px;
     box-sizing: border-box;
     color: #777;
     text-align: center;
@@ -635,23 +811,25 @@ input[type=number]::-webkit-outer-spin-button {
 #sub > .market > .cart > table .thumb {
     width: 60px;
 }
+
+
 #sub > .market > .cart > table tr > td > strong {
     color: #111;
-    font-weight: bold;            
+    font-weight: bold;
 }
-#sub > .market > .cart > input[name=del] {
+#sub > .market > .cart > input[name=delCart] {
     margin-top: 10px;
     padding: 6px;
     border: none;
-    background-color: #960d1a;
+    background-color: #fd5900;
     color: white;
     cursor: pointer;
 }
 
 #sub > .market > .cart > .info {
     float: right;
-    width: 40%;  
-    margin-top: 10px;  
+    width: 40%;
+    margin-top: 10px;
     position: relative;
     overflow: hidden;
     border: 1px solid #d7d7d7;
@@ -660,7 +838,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .cart > .info > table {
     float: right;
-    width: 100%;    
+    width: 100%;
     margin-left: 16px;
     border-top: 1px solid #111;
     border-bottom: 1px solid #111;
@@ -678,17 +856,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .cart > .info > table .total {
     font-weight: bold;
-    color: #c20a0a;        
+    color: #fd5900;
 }
 
-#sub > .market > .cart > .info > .btnOrder {    
+#sub > .market > .cart > .info > .btnOrder {
     clear: both;
     float: right;
     width: 100%;
     margin-top: 10px;
     padding: 10px;
     border: none;
-    background-color: #960d1a;
+    background-color: #fd5900;
     color: white;
     cursor: pointer;
 }
@@ -709,7 +887,6 @@ input[type=number]::-webkit-outer-spin-button {
 #sub > .market > .order > table {
     width: 100%;
     border-collapse: collapse;
-    border-top: 1px solid #111;
     border-bottom: 1px solid #111;
     margin-top: 10px;
 }
@@ -718,15 +895,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #sub > .market > .order > table th {
-    padding: 10px;
-    background-color: #e5ecef;
+    padding: 6px;
+    color: #ffffff;
+    background-color:  #A8D031;
     border-bottom: 1px solid #d1dee2;
 }
 
 #sub > .market > .order > table tr > td {
-    padding: 10px;            
+    padding: 10px;
     box-sizing: border-box;
-    color: #777;
+    color: #222;
+    font-size: 14px;
     text-align: center;
 }
 #sub > .market > .order > table tr > td:nth-child(1) {width: 10%;}
@@ -734,7 +913,7 @@ input[type=number]::-webkit-outer-spin-button {
 #sub > .market > .order > table tr > td:nth-child(3) {width: auto;}
 #sub > .market > .order > table tr > td:nth-child(4) {width: 10%;}
 #sub > .market > .order > table tr > td:nth-child(5) {width: 10%;}
-#sub > .market > .order > table tr > td:nth-child(6) {width: 10%;}
+#sub > .market > .order > table tr > td:nth-child(6) {width: 10%; color: #fd5900}
 #sub > .market > .order > table tr > td:nth-child(7) {width: 10%;}
 #sub > .market > .order > table tr > td:nth-child(8) {width: 10%;}
 
@@ -743,7 +922,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > table tr > td > strong {
     color: #111;
-    font-weight: bold;            
+    font-weight: bold;
 }
 
 
@@ -758,20 +937,53 @@ input[type=number]::-webkit-outer-spin-button {
 #sub > .market > .order > .shipping table {
     width: 100%;
     border-collapse: collapse;
-    border-top: 1px solid #be0808;            
+    border-right: 1px solid #cfcfcf;
+    border-top: 1px solid #cfcfcf;
 }
 #sub > .market > .order > .shipping table tr {}
 #sub > .market > .order > .shipping table td {
-    padding: 10px;
-    border-bottom: 1px solid #d7d7d7;
+    padding: 6px;
+    border-bottom: 1px solid #636060;
+    color: #ffffff;
 }
 #sub > .market > .order > .shipping table td:first-child {
     width: 120px;
-    background: #f7f7f7;
+    background: #878787;
+}
+
+#sub > .market > .order > .shipping table td > label {
+    color: #333;
+}
+
+#sub > .market > .order > .shipping table td > label > input {
+    position: relative;
+    top: 8px;
+    margin-right: 3px;
+}
+
+#sub > .market > .order > .shipping table #usePointBtn {
+    background-color: #6f68ef;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin-left: 5px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+}
+
+#sub > .market > .order > .shipping table .usepoint {
+    height: 30px;
+    position: relative;
+    top: 10px;
+
 }
 
 #sub > .market > .order > .shipping input {
-    height: 18px;
+    height: 25px;
     border: 1px solid #d7d7d7;
     outline: none;
 }
@@ -792,7 +1004,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 320px;
     height: 60px;
     border: 1px solid #d7d7d7;
-    resize: none;            
+    resize: none;
     outline: none;
 }
 
@@ -808,7 +1020,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > .final > table {
     float: right;
-    width: 100%;    
+    width: 100%;
     margin-left: 16px;
     border-top: 1px solid #111;
     border-bottom: 1px solid #111;
@@ -826,18 +1038,21 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > .final > table .total {
     font-weight: bold;
-    color: #c20a0a;        
+    color: #222;
+    font-size: 18px;
 }
 
-#sub > .market > .order > .final > .btnOrder {    
+#sub > .market > .order > .final > .btnOrder {
     clear: both;
     float: right;
     width: 100%;
     margin-top: 10px;
     padding: 10px;
     border: none;
-    background-color: #960d1a;
-    color: white;    
+    border-radius: 5px;
+    background-color: #fd5900;
+    color: white;
+    cursor: pointer;
 }
 
 #btnZip {
@@ -847,9 +1062,8 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 0;
     border: none;
     margin-left: 4px;
-    vertical-align: middle;            
+    vertical-align: middle;
 }
-
 
 
 /* 농작물 이야기 */
@@ -889,14 +1103,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* user */
 #sub > .user > article {
-	float: none;
-	width: 100%;
+    float: none;
+    width: 100%;
     min-height: auto;
-	padding: 0 40px;
+    padding: 0 40px;
 }
 
 #sub > .user > article > nav {
-	width: 100%;
+    width: 100%;
 }
 
 /* terms */
@@ -950,64 +1164,100 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* 🎈login */
 .login {
-    position: relative;
-    width: 360px;
+    width: 420px;
     height: auto;
-    border: 1px solid #cfded8;
-    box-sizing: border-box;
     margin: 100px auto;
 }
-.login > form {
-}
-.login > form > table {
-    margin-left: 52px;
-    margin-top: 30px;
-}
-.login > form > table tr {
-}
-.login > form > table td {
-}
-.login > form > table img {
-    width: 20px;
-}
-.login > form > table input {
-    width: 162px;
-    height: 22px;
-    margin-left: 6px;
-    margin-bottom: 4px;
-    border: 1px solid #e4eaec;
-    background: #f7f7f7;
-}
-.login > form > input[type="submit"] {
-    position: absolute;
-    right: 48px;
-    top: 33px;
-    width: 60px;
-    height: 52px;
-    border: 1px solid #bebebe;
-    background-color: #fdfdfd;
+
+.login h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
-.login > div {
-    width: 100%;
-    height: 100px;
-    background-color: #f5f6fa;
-    border-top: 1px solid #cfded8;
-    margin-top: 20px;
-    padding: 20px;
-    box-sizing: border-box;
+.login .loginForm .id, .pw {
+    width: 360px;
+    height: 25px;
+    padding: 5px 10px;
+    border: 0;
+    background-color: #f1fced;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 13px;
 }
-.login > div > h3 {
+.login input.loginBtn {
+    width: 380px;
+    height: 35px;
+    background-color: #4ca900d1;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    margin: 5px 0 10px;
 }
-.login > div > p {
+
+.login .autoLogin {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.login .autoLogin .checkboxSet label {
+    font-size: 14px;
+}
+
+.login .autoLogin #checkbox1 {
+    vertical-align: middle;
+}
+
+.login .autoLogin .findIdPw {
+    position: relative;
+    right: 40px;
+}
+
+.login .autoLogin .findIdPw a {
+    color: #717171e0;
+    font-size: 14px;
+}
+
+
+.login .register {
+    display: block;
+    text-align: right;
+    position: relative;
+    right: 220px;
+    margin-top: 5px;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.login .snsLogin {
+    width: 380px;
+    border-top: 1px solid #ababab;
     margin: 10px 0;
-}
-.login > div > a {
-    float: right;
+    text-align: center;
 }
 
+.login .snsLogin h4 {
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0;
+}
 
-/* 🎈register */
+.login .snsLogin a img {
+    width: 40px;
+}
+
+.login .snsLogin a img:first-child {
+    margin-right: 10px;
+}
+
+.login .snsLogin a img:last-child {
+    margin-left: 10px;
+}
+
+    /* 🎈register */
 .register {
     width: 600px;
     height: auto;
@@ -1077,6 +1327,7 @@ button {
     cursor: pointer;
 }
 
+/*
 .oauth2 {
     display: block;
     text-align: center;
@@ -1086,11 +1337,17 @@ button {
 .oauth2 img {
     width: 255px;
     height: 40px;
-
 }
+ */
 
 input {
     outline: none;
 }
 
-
+/* 🎈top 버튼 */
+#top {
+    position: fixed;
+    right: 50px;
+    bottom: 70px;
+    cursor: pointer;
+}
